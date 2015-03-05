@@ -1,0 +1,8 @@
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\bin\Release\CoreBillingService.exe.config
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\bin\Release\CoreBillingService.exe
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\bin\Release\CoreBillingService.pdb
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\obj\Release\CoreBillingService.ProjectInstaller.resources
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\obj\Release\CoreBillingService.Service1.resources
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\obj\Release\CoreBillingService.csproj.GenerateResource.Cache
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\obj\Release\CoreBillingService.exe
+C:\Users\nevoband\Documents\Visual Studio 2013\Projects\CoreBillingService\CoreBillingService\obj\Release\CoreBillingService.pdb
