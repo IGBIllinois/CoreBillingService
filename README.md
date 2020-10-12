@@ -3,7 +3,8 @@ Program to monitor who is logged into a windows machine.  Then it sends the info
 
 # Compiling
 
-* Uses Microsoft Visual Studios
+* Microsoft Visual Studios 2019
+* Microsoft Visual Studio Installer Project Plugin
 
 # Installation
 
