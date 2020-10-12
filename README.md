@@ -5,6 +5,7 @@ Program to monitor who is logged into a windows machine.  Then it sends the info
 
 * Microsoft Visual Studios 2019
 * Microsoft Visual Studio Installer Project Plugin
+* .NET Framework 4.7.2
 
 # Installation
 
