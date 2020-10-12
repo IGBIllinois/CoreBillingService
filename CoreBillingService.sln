@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBillingService", "CoreBillingService\CoreBillingService.csproj", "{7C1BC63C-13D0-40E9-AB28-3844C34BE44A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Core Billing Installer", "Setup2\Setup2.vdproj", "{897673D3-D3DB-4B35-85B7-0C2B3629F112}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Core Billing Installer", "Setup\Setup.vdproj", "{009C9672-DAD5-4B83-B839-208D24C2F66C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,11 +17,15 @@ Global
 		{7C1BC63C-13D0-40E9-AB28-3844C34BE44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C1BC63C-13D0-40E9-AB28-3844C34BE44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C1BC63C-13D0-40E9-AB28-3844C34BE44A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{897673D3-D3DB-4B35-85B7-0C2B3629F112}.Debug|Any CPU.ActiveCfg = Debug
-		{897673D3-D3DB-4B35-85B7-0C2B3629F112}.Release|Any CPU.ActiveCfg = Release
-		{897673D3-D3DB-4B35-85B7-0C2B3629F112}.Release|Any CPU.Build.0 = Release
+		{009C9672-DAD5-4B83-B839-208D24C2F66C}.Debug|Any CPU.ActiveCfg = Debug
+		{009C9672-DAD5-4B83-B839-208D24C2F66C}.Debug|Any CPU.Build.0 = Debug
+		{009C9672-DAD5-4B83-B839-208D24C2F66C}.Release|Any CPU.ActiveCfg = Release
+		{009C9672-DAD5-4B83-B839-208D24C2F66C}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D08D3604-1333-4A21-BBED-6E08A186F284}
 	EndGlobalSection
 EndGlobal
