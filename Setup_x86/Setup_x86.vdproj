@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Core Billing Installer"
+"ProjectName" = "8:Core Billing Installer x86"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -219,6 +219,13 @@
         }
         "LaunchCondition"
         {
+            "{836E08B8-0285-4809-BA42-01DB6754A45D}:_EFDF8A378AF7489EB3CCB0BAA05358B9"
+            {
+            "Name" = "8:RunAsAdmin"
+            "Condition" = "8:AdminUser"
+            "Message" = "8:<Error Message>"
+            "InstallUrl" = "8:"
+            }
         }
         "Locator"
         {
@@ -233,23 +240,23 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Core Billing Tracking"
         "ProductCode" = "8:{56221F42-E77A-40AF-AA6F-769555ED9E3B}"
-        "PackageCode" = "8:{E125CFED-A038-478C-BA88-D5B89EEF2046}"
+        "PackageCode" = "8:{3005D35C-9551-4293-977B-4851C04FCD40}"
         "UpgradeCode" = "8:{0E3D001A-8F53-4802-9C66-E73AF18FA5A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:IGB"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/IGBIllinois/CoreBillingService"
         "Title" = "8:Core Billing Install"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Nevo Band"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:http://www.igb.illinois.edu"
+        "ARPCOMMENTS" = "8:Core Billing Service Installer"
+        "ARPURLINFOABOUT" = "8:https://github.com/IGBIllinois/CoreBillingService"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -1026,7 +1033,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C89E9539F25548FE8DEA18FB00DE4AE9"
             {
-            "SourcePath" = "8:..\\CoreBillingService\\obj\\Release\\CoreBillingService.exe"
+            "SourcePath" = "8:..\\CoreBillingService\\obj\\x64\\Release\\CoreBillingService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9CA0B4B7C17448EB812414472FF236DA"
