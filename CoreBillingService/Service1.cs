@@ -20,8 +20,10 @@ namespace CoreBillingService
     public partial class Service1 : ServiceBase
     { 
         private string deviceName;
-        private object coreWebUrl;
-        private object coreAuthKey;
+        private string coreWebUrl;
+        private string coreAuthKey;
+        private string session_page = "session.php";
+        private string fullCoreWebUrl;
 
         public Service1()
         {
@@ -35,8 +37,18 @@ namespace CoreBillingService
 
             Microsoft.Win32.RegistryKey regKey = Registry.LocalMachine;
             regKey = regKey.OpenSubKey("SOFTWARE\\IGB");
-            coreWebUrl = regKey.GetValue("CoreApiUrl");
-            coreAuthKey = regKey.GetValue("CoreAuthKey");
+            coreWebUrl = (string)regKey.GetValue("CoreApiUrl");
+            coreAuthKey = (string)regKey.GetValue("CoreAuthKey");
+            
+            if (coreWebUrl.EndsWith("/"))
+            {
+                fullCoreWebUrl = coreWebUrl + session_page;
+
+            }
+            else
+            {
+                fullCoreWebUrl = coreWebUrl + "/" + session_page;
+            }
 
             // Set up a timer to trigger every minute.
             System.Timers.Timer timer = new System.Timers.Timer();
@@ -68,10 +80,12 @@ namespace CoreBillingService
 
             //Set array of parameters to send to REST API
             string[] paramName = new string[] {"key","username"};
-            string[] paramValue = new string[] {(string)coreAuthKey,userName};
+            string[] paramValue = new string[] {coreAuthKey,userName};
 
             //Send to REST API
-            string results = HttpPost((string)coreWebUrl, paramName, paramValue);
+          
+            
+            string results = HttpPost(fullCoreWebUrl, paramName, paramValue);
 
             //Results has a length of 0 or is not null then log the error
             if(results != null || results.Length>0)

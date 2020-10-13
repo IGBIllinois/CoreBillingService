@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration.Install;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ServiceProcess;
 
 namespace CoreBillingService
 {
@@ -14,6 +15,7 @@ namespace CoreBillingService
         public ProjectInstaller()
         {
             InitializeComponent();
+            serviceInstaller1.AfterInstall += (sender, args) => new ServiceController(serviceInstaller1.ServiceName).Start();
         }
 
         private void serviceInstaller1_AfterInstall(object sender, InstallEventArgs e)
