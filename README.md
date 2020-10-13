@@ -1,4 +1,7 @@
 # Core Billing Service
+
+[![Build Status](https://www.travis-ci.com/IGBIllinois/CoreBillingService.svg?branch=master)](https://www.travis-ci.com/IGBIllinois/CoreBillingService)
+
 Program to monitor who is logged into a windows machine.  Then it sends the information to the core billing website [https://github.com/IGBIllinois/Corebilling](https://github.com/IGBIllinois/Corebilling).
 
 # Compiling
