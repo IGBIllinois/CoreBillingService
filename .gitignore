@@ -361,9 +361,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-Setup_x64/Release
-Setup_x64/Debug
-Setup_x86/Release
-Setup_x86/Debug
-CoreBillingService/bin
-CoreBillingService/obj
+/Setup_x64/Release
+/Setup_x64/Debug
+/Setup_x86/Release
+/Setup_x86/Debug
+/CoreBillingService/bin
+/CoreBillingService/obj
