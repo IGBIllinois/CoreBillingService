@@ -25,14 +25,24 @@ namespace CoreBillingService
         private string session_page = "session.php";
         private string fullCoreWebUrl;
         private System.Timers.Timer timer;
+        private System.Diagnostics.EventLog log;
         public Service1()
         {
             InitializeComponent();
+            this.AutoLog = false;
+            log = new System.Diagnostics.EventLog();
+            
+            if (!System.Diagnostics.EventLog.SourceExists("CoreBillingService"))
+            {
+                System.Diagnostics.EventLog.CreateEventSource("CoreBillingService", "Application");
+            }
+            log.Source = "CoreBillingService";
+            log.Log = "Application";
         }
 
         protected override void OnStart(string[] args)
         {
-            EventLog.WriteEntry("In OnStart at " + DateTime.Now);
+            log.WriteEntry("Starting Service");
             deviceName = System.Environment.MachineName;
 
             Microsoft.Win32.RegistryKey regKey = Registry.LocalMachine;
@@ -64,9 +74,9 @@ namespace CoreBillingService
             {
                 timer.Stop();
                 timer.Dispose();
+                log.WriteEntry("Stopping Service");
             }
-            string sEvent = "Service stopped at " + DateTime.Now;
-            //EventLog.WriteEntry("Core Billing Service", sEvent);
+           
         }
 
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
@@ -90,17 +100,19 @@ namespace CoreBillingService
             //Send to REST API
           
             
-            string results = HttpPost(fullCoreWebUrl, paramName, paramValue);
+            String results = HttpPost(fullCoreWebUrl, paramName, paramValue);
 
             //Results has a length of 0 or is not null then log the error
-            if(results != null || results.Length>0)
+            if (results != null || results.Length > 0)
             {
-                EventLog.WriteEntry("Core Billing Service", results);
+                log.WriteEntry(results);
             }
+           
+
+ 
         }
       
-        static string HttpPost(string url,
-    string[] paramName, string[] paramVal)
+        private String HttpPost(string url,string[] paramName, string[] paramVal)
         {
             HttpWebRequest req = WebRequest.Create(new Uri(url))
                                  as HttpWebRequest;
@@ -130,17 +142,32 @@ namespace CoreBillingService
                 post.Write(formData, 0, formData.Length);
             }
 
+            
+
             // Pick up the response:
             string result = null;
-            using (HttpWebResponse resp = req.GetResponse()
-                                          as HttpWebResponse)
+            try
             {
-                StreamReader reader =
-                    new StreamReader(resp.GetResponseStream());
-                result = reader.ReadToEnd();
-            }
+                using (HttpWebResponse resp = req.GetResponse()
+                                              as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(resp.GetResponseStream());
+                    result = reader.ReadToEnd();
+                    if (resp.StatusCode != HttpStatusCode.OK)
+                    {
+                        log.WriteEntry("HTTP Code: " + (int)resp.StatusCode + " for " + fullCoreWebUrl, EventLogEntryType.Error);
+                        return null;
+                    }
 
+                }
+            }
+            catch (WebException we)
+            {
+                log.WriteEntry("HTTP Code: " + (int)((HttpWebResponse)we.Response).StatusCode + " for " + fullCoreWebUrl, EventLogEntryType.Error);
+                return null;
+            }
             return result;
+
         }
 
         public String getUsername()
@@ -186,5 +213,7 @@ namespace CoreBillingService
             this.ServiceName = "CoreBillingService";
 
         }
+
+        
     }
 }
