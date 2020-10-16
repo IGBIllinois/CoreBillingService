@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Management;
 using System.Text.RegularExpressions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Xml;
+using System.Web.Script.Serialization;
 
 namespace CoreBillingService
 {
@@ -83,19 +87,20 @@ namespace CoreBillingService
         {
             // TODO: Insert monitoring activities here.
 
-            string userName = "";
 
-            /*
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT UserName FROM Win32_ComputerSystem");
-            ManagementObjectCollection collection = searcher.Get();
-            string userName = (string)collection.Cast<ManagementBaseObject>().First()["UserName"];
-            */
-
-            userName = getUsername();
+            string userName = getUsername();
+        
+            Dictionary<string, string> jsonVariables = new System.Collections.Generic.Dictionary<string, string>();
+            jsonVariables.Add("key", coreAuthKey);
+            jsonVariables.Add("username", userName);
+            jsonVariables.Add("os", Environment.OSVersion.VersionString);
+            jsonVariables.Add("version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            string json = new JavaScriptSerializer().Serialize(jsonVariables); 
 
             //Set array of parameters to send to REST API
-            string[] paramName = new string[] {"key","username"};
-            string[] paramValue = new string[] {coreAuthKey,userName};
+            string[] paramName = new string[] {"key","username","json"};
+            string[] paramValue = new string[] {coreAuthKey,userName,json};
+
 
             //Send to REST API
           
@@ -105,7 +110,7 @@ namespace CoreBillingService
             //Results has a length of 0 or is not null then log the error
             if (results != null || results.Length > 0)
             {
-                log.WriteEntry(results);
+                log.WriteEntry("Success contacting " + fullCoreWebUrl + " " + results);
             }
            
 
