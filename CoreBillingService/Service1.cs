@@ -24,7 +24,7 @@ namespace CoreBillingService
         private string coreAuthKey;
         private string session_page = "session.php";
         private string fullCoreWebUrl;
-
+        private System.Timers.Timer timer;
         public Service1()
         {
             InitializeComponent();
@@ -32,11 +32,11 @@ namespace CoreBillingService
 
         protected override void OnStart(string[] args)
         {
-            EventLog.WriteEntry("In OnStart");
+            EventLog.WriteEntry("In OnStart at " + DateTime.Now);
             deviceName = System.Environment.MachineName;
 
             Microsoft.Win32.RegistryKey regKey = Registry.LocalMachine;
-            regKey = regKey.OpenSubKey("SOFTWARE\\IGB");
+            regKey = regKey.OpenSubKey("SOFTWARE\\CoreBillingService");
             coreWebUrl = (string)regKey.GetValue("CoreApiUrl");
             coreAuthKey = (string)regKey.GetValue("CoreAuthKey");
             
@@ -51,7 +51,7 @@ namespace CoreBillingService
             }
 
             // Set up a timer to trigger every minute.
-            System.Timers.Timer timer = new System.Timers.Timer();
+            timer = new System.Timers.Timer();
             timer.Interval = 60000; // 60 seconds
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
             timer.Start();
@@ -60,8 +60,13 @@ namespace CoreBillingService
 
         protected override void OnStop()
         {
-            string sEvent = "Service stopped";
-            EventLog.WriteEntry("Core Billing Service", sEvent);
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+            string sEvent = "Service stopped at " + DateTime.Now;
+            //EventLog.WriteEntry("Core Billing Service", sEvent);
         }
 
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)

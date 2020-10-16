@@ -195,7 +195,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_9CA0B4B7C17448EB812414472FF236DA"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -239,15 +239,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Core Billing Service"
-        "ProductCode" = "8:{56221F42-E77A-40AF-AA6F-769555ED9E3B}"
-        "PackageCode" = "8:{968C6373-F13A-445D-8DCF-020040B16EF6}"
+        "ProductCode" = "8:{86E38250-5728-4278-98E9-F292D70D03F4}"
+        "PackageCode" = "8:{4861EB69-CC14-46E0-BF1B-E5204D336CB1}"
         "UpgradeCode" = "8:{0E3D001A-8F53-4802-9C66-E73AF18FA5A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:University of Illinois at Urbana-Champaign"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/IGBIllinois/CoreBillingService"
@@ -283,7 +283,7 @@
                         {
                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_0129242F4D7A48BC9B3FCA78E4533A6E"
                             {
-                            "Name" = "8:[Manufacturer]"
+                            "Name" = "8:CoreBillingService"
                             "Condition" = "8:"
                             "AlwaysCreate" = "11:TRUE"
                             "DeleteAtUninstall" = "11:TRUE"

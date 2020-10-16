@@ -110,6 +110,7 @@
             "Identifier" = "8:_CC9BFE31_DF4A_44EF_93AC_4519A6211041"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_5D7C6F3209234C41B27872EE704C5090"
             {
@@ -124,6 +125,7 @@
             "Identifier" = "8:_5CBA176C_0120_4392_A11F_FBFE5040EAE4"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6CA393A45A0443CFBDD135F4646A6076"
             {
@@ -138,6 +140,7 @@
             "Identifier" = "8:_680810C8_C026_4445_B360_14045B1525E5"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_F90787FD1A6E4D0F89FC2A504D87C767"
             {
@@ -152,6 +155,7 @@
             "Identifier" = "8:_C2286700_D10D_428F_A459_CEA429F5B88C"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
             }
         }
         "DefaultFeature"
@@ -195,7 +199,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_9CA0B4B7C17448EB812414472FF236DA"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -239,15 +243,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Core Billing Service"
-        "ProductCode" = "8:{56221F42-E77A-40AF-AA6F-769555ED9E3B}"
-        "PackageCode" = "8:{D432336C-F057-4989-9340-7F0CE4A6877E}"
+        "ProductCode" = "8:{2D36F414-2F56-401E-AF4E-DBD130C8C988}"
+        "PackageCode" = "8:{2B4DF700-0866-4EDB-A879-DF99DE898009}"
         "UpgradeCode" = "8:{0E3D001A-8F53-4802-9C66-E73AF18FA5A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:University of Illinois at Urbana-Champaign"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/IGBIllinois/CoreBillingService"
@@ -283,7 +287,7 @@
                         {
                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_0129242F4D7A48BC9B3FCA78E4533A6E"
                             {
-                            "Name" = "8:[Manufacturer]"
+                            "Name" = "8:CoreBillingService"
                             "Condition" = "8:"
                             "AlwaysCreate" = "11:TRUE"
                             "DeleteAtUninstall" = "11:TRUE"

@@ -15,12 +15,17 @@ namespace CoreBillingService
         public ProjectInstaller()
         {
             InitializeComponent();
-            serviceInstaller1.AfterInstall += (sender, args) => new ServiceController(serviceInstaller1.ServiceName).Start();
+            //serviceInstaller1.AfterInstall += (sender, args) => new ServiceController(serviceInstaller1.ServiceName).Start();
+            
+
         }
 
         private void serviceInstaller1_AfterInstall(object sender, InstallEventArgs e)
         {
+            new ServiceController(serviceInstaller1.ServiceName).Start();
 
         }
+
+      
     }
 }

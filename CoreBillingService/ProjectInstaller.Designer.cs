@@ -39,6 +39,7 @@
             // 
             // serviceInstaller1
             // 
+            this.serviceInstaller1.Description = "Tracks logged in users and sends it to the coreapp web service";
             this.serviceInstaller1.DisplayName = "Core Billing Service";
             this.serviceInstaller1.ServiceName = "CoreBillingService";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
