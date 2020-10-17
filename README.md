@@ -19,7 +19,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 * Windows 7 TLS 1.1/1.2 support. KB314025.  This can be installed through Windows Update as optional update.  It can also be manually installed by going to [https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245](https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245)
 
 ## Installation
-* Run CoreBillingServiceSetup_x64.msi or CoreBillingServiceSetup_x86.msi
+* Run **CoreBillingServiceSetup_x64.msi** or **CoreBillingServiceSetup_x86.msi**
 * During installation put in the URL and generated key from core billing software
 * The Service will automatically start.
 * You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service->Recovery
