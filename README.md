@@ -10,7 +10,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 
 * Microsoft Visual Studios 2019
 * Microsoft Visual Studio Installer Project Plugin
-* .NET Framework 4.8 [https://dotnet.microsoft.com/download/dotnet-framework/net48](https://dotnet.microsoft.com/download/dotnet-framework/net48)
+* .NET Framework 4.8 - [https://dotnet.microsoft.com/download/dotnet-framework/net48](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 
 # Installing
 ## Requirements
@@ -23,6 +23,6 @@ Then it sends the information to the core billing website [https://github.com/IG
 * During installation put in the URL and generated key from core billing software
 * The Service will automatically start.
 * You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service->Recovery
-* For this to function with Windows Remote Desktop, disable Fast User Switching
+* For this to function with Windows Remote Desktop, disable **Fast User Switching**
 
 
