@@ -22,7 +22,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 * Run CoreBillingServiceSetup_x64.msi or CoreBillingServiceSetup_x86.msi
 * During installation put in the URL and generated key from core billing software
 * The Service will automatically start.
-* You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service
+* You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service->Recovery
 * For this to function with Windows Remote Desktop, disable Fast User Switching
 
 
