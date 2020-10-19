@@ -76,6 +76,7 @@ namespace CoreBillingService
                     fullCoreWebUrl = coreApiUrl + "/" + session_page;
                 }
 
+                FastUserSwitchingEnabled();
                 // Set up a timer to trigger every minute.
                 timer = new System.Timers.Timer();
                 timer.Interval = 60000; // 60 seconds
@@ -147,7 +148,15 @@ namespace CoreBillingService
             //Results has a length of 0 or is not null then log the error
             if (results != null || results.Length > 0)
             {
-                log.WriteEntry("Success contacting " + fullCoreWebUrl + " " + results);
+                    if (userName != defaultUser)
+                    {
+                        log.WriteEntry("Success contacting " + fullCoreWebUrl + ". Username: " + userName);
+                    }
+                    else
+                    {
+                        log.WriteEntry("Success contacting " + fullCoreWebUrl + ". No User logged in.");
+
+                    }
             }
             else
             {
@@ -222,17 +231,10 @@ namespace CoreBillingService
 
         private string getUsername()
         {
-            
-            if (FastUserSwitchingEnabled())
-            {
-                log.WriteEntry("Using Local Username");
-                return getLocalUsername();
-            }
-            else
-            {
-                log.WriteEntry("Use Process Username");
-                return getUserNameByProcess();
-            }
+
+            FastUserSwitchingEnabled();
+            return getUserNameByProcess();
+ 
             
         }
         private String getLocalUsername()
@@ -365,7 +367,7 @@ namespace CoreBillingService
                 
                 if ((value == null) || (Convert.ToInt32(value) == 0))
                 {
-                    log.WriteEntry("Fast User switching is enabled.  Please disable for tracking of users with Remote Desktop.",EventLogEntryType.Warning);
+                    log.WriteEntry("Fast User switching is enabled.  Please disable to properly track users.",EventLogEntryType.Warning);
                     return true;
 
                 }
@@ -373,7 +375,7 @@ namespace CoreBillingService
             }
             catch (Exception)
             {
-                log.WriteEntry("Fast User switching is enabled or not detected.  Please disable for tracking of users with Remote Desktop.", EventLogEntryType.Warning);
+                log.WriteEntry("Fast User switching is enabled or not detected.  Please disable to properly track users.", EventLogEntryType.Warning);
                 return true;
             }
 
