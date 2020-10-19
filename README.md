@@ -15,7 +15,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 # Installing
 ## Requirements
 * Windows 7 or 10, 32 or 64 bit
-* .NET Framework 4.8.  The installer should install this.  It can be downloaded manually from [https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows](https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows)
+* .NET Framework 4.8.  The installer should install this.  It can also be downloaded manually from [https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows](https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows)
 * Windows 7 TLS 1.1/1.2 support. KB314025.  This can be installed through Windows Update as optional update.  It can also be manually installed by going to [https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245](https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245)
 
 ## Installation
@@ -24,6 +24,6 @@ Then it sends the information to the core billing website [https://github.com/IG
 * During installation put in the URL and generated key from core billing software
 * The Service will automatically start.
 * You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service->Recovery
-* For this to function with Windows Remote Desktop, disable **Fast User Switching**
+* For this to function properly, disable **Fast User Switching**
 
 
