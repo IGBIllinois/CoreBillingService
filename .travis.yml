@@ -1,0 +1,14 @@
+language: csharp
+
+branches:
+   only:
+   - master
+
+mono:
+   - latest
+
+install:
+    - echo "" > /dev/null
+
+script:
+   - if find . -name "*.cs" -exec mcs --parse {} 2>&1 \; | grep "error"; then exit 1; fi
