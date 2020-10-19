@@ -25,5 +25,5 @@ Then it sends the information to the core billing website [https://github.com/IG
 * The Service will automatically start.
 * You need to set Service Recovery Options by going to Control Panel->Administrative Tools->Services->Core Billing Service->Recovery
 * For this to function properly, disable **Fast User Switching**
-
+* Logs can be viewed by going to Control Panel->Administrative Tools->Event Viewer->Windows Logs->Application->CoreBillingService
 
