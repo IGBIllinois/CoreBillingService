@@ -24,6 +24,7 @@ using System.Web.Script.Serialization;
 namespace CoreBillingService
 {
    
+
     public partial class Service1 : ServiceBase
     { 
         private string deviceName;
@@ -103,40 +104,25 @@ namespace CoreBillingService
 
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
-            // TODO: Insert monitoring activities here.
-
-
             string userName = getUsername();
+            outputJson outputJson_obj = new outputJson();
+            outputJson_obj.key = coreAuthKey;
+            outputJson_obj.username = userName;
+            outputJson_obj.os = getWindowsVersion();
+            
+            outputJson_obj.version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            outputJson_obj.computer_name = System.Environment.MachineName;
 
-            Dictionary<string, string> jsonVariables = new System.Collections.Generic.Dictionary<string, string>();
-            jsonVariables.Add("key", coreAuthKey);
-            jsonVariables.Add("username", userName);
-
-
-
-            jsonVariables.Add("os", Environment.OSVersion.VersionString + " " + releaseId);
-
-            if (Environment.Is64BitOperatingSystem)
-            {
-                jsonVariables.Add("os_bit", "64");
-            }
-            else
-            {
-                jsonVariables.Add("os_bit", "32");
-            }
-            jsonVariables.Add("version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            jsonVariables.Add("computer_name", System.Environment.MachineName);
-
-
+            outputJson_obj.user_switching = FastUserSwitchingEnabled();
             string ipaddress = getIPAddress();
-            jsonVariables.Add("ipaddress", ipaddress);
-            jsonVariables.Add("hostname", getHostName(ipaddress));
+            outputJson_obj.ipaddress = ipaddress;
+            outputJson_obj.hard_drives = getHardDrives();
 
-            string json = new JavaScriptSerializer().Serialize(jsonVariables);
-
+            string json_serialized = new JavaScriptSerializer().Serialize(outputJson_obj);
+            
             //Set array of parameters to send to REST API
-            string[] paramName = new string[] { "key", "username", "json" };
-            string[] paramValue = new string[] { coreAuthKey, userName, json };
+            string[] paramName = new string[] { "json" };
+            string[] paramValue = new string[] { json_serialized };
 
 
             //Send to REST API
@@ -231,11 +217,7 @@ namespace CoreBillingService
 
         private string getUsername()
         {
-
-            FastUserSwitchingEnabled();
-            return getUserNameByProcess();
- 
-            
+            return getUserNameByProcess();   
         }
         private String getLocalUsername()
         {
@@ -340,23 +322,6 @@ namespace CoreBillingService
 
         }
         
-        private string getHostName(string ipAddress)
-        {
-            try
-            {
-                IPHostEntry entry = Dns.GetHostEntry(ipAddress);
-                if (entry != null)
-                {
-                    return entry.HostName;
-                }
-            }
-            catch (SocketException)
-            {
-                return "";
-            }
-
-            return "";
-        }
 
         private Boolean FastUserSwitchingEnabled()
         {
@@ -378,11 +343,87 @@ namespace CoreBillingService
                 log.WriteEntry("Fast User switching is enabled or not detected.  Please disable to properly track users.", EventLogEntryType.Warning);
                 return true;
             }
+        }
 
+        private string getWindowsVersion()
+        {
+            
+            string windows_version = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName", "").ToString();
+            
+            //For Windows 7 - gets service pack
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion", null) != null) 
+            {
+                windows_version += " " + Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CSDVersion", "").ToString();
 
+            }
+            //For Windows 10 - gets Windows 10 version ie 1909, 2004,21H2, etc
+            else if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion", null) != null)
+            {
+                windows_version += " " + Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion", "").ToString();
+            }
 
+            if (Environment.Is64BitOperatingSystem)
+            {
+                windows_version += " x64";
+            }
+            else
+            {
+                windows_version += " x32";
+            }
+
+            return windows_version;
+        }
+        private List<HardDrive> getHardDrives()
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            List<HardDrive> HardDrives = new List<HardDrive>();
+
+            foreach (DriveInfo d in allDrives)
+            {
+                if(d.DriveType.ToString() == "Fixed")
+                {
+                    
+                    HardDrive Drive = new HardDrive
+                    {
+                        
+                        volume = d.Name.Substring(0,1),
+                        size = d.TotalSize,
+                        free = d.TotalFreeSpace
+                    };
+                    HardDrives.Add(Drive);
+
+                }
+
+            }
+            return HardDrives;
         }
     }
 
-   
+    public class HardDrive
+    {
+        public string volume { get; set; }
+        public long size { get; set; }
+        public long free { get; set; }
+
+
+    }
+    public class outputJson
+    {
+        public string key { get; set; }
+        public string username { get; set; }
+        public string os { get; set; }
+        public string version { get; set; }
+        public string computer_name { get; set; }
+        public bool user_switching { get; set; }
+        public string ipaddress { get; set; }
+        public List<HardDrive> hard_drives { get; set; }
+
+    }
+
+    public class receivedJson
+    {
+        public bool success { get; set; }
+        public string message { get; set; }
+
+    }
 }

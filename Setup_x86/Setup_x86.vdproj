@@ -327,6 +327,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_57190A1C9E6670263825A0DB10FFB4C1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_576DDA75457CABC01A4E6E3B7081F5AA"
         "OwnerKey" = "8:_C89E9539F25548FE8DEA18FB00DE4AE9"
         "MsmSig" = "8:_UNDEFINED"
@@ -641,6 +647,12 @@
         {
         "MsmKey" = "8:_CE850638F5F17D34328A567013661467"
         "OwnerKey" = "8:_525C8206BB38D1B7AC03BB3B2F7A9958"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE850638F5F17D34328A567013661467"
+        "OwnerKey" = "8:_57190A1C9E6670263825A0DB10FFB4C1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2933,6 +2945,37 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_57190A1C9E6670263825A0DB10FFB4C1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_57190A1C9E6670263825A0DB10FFB4C1"
+                    {
+                    "Name" = "8:System.Buffers.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Buffers.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9CA0B4B7C17448EB812414472FF236DA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -5319,15 +5362,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Core Billing Service"
-        "ProductCode" = "8:{86E38250-5728-4278-98E9-F292D70D03F4}"
-        "PackageCode" = "8:{063E1995-1AD2-4765-85F6-C3CBAF70E735}"
+        "ProductCode" = "8:{0CEC1F29-F30E-4D0C-AF14-EFCAF7A311F6}"
+        "PackageCode" = "8:{A6FC3B6A-3C43-454F-985B-B3C628D9495D}"
         "UpgradeCode" = "8:{0E3D001A-8F53-4802-9C66-E73AF18FA5A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:2.0"
         "Manufacturer" = "8:University of Illinois at Urbana-Champaign"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/IGBIllinois/CoreBillingService"
