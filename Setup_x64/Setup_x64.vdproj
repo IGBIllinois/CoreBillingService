@@ -202,18 +202,6 @@
         "Entry"
         {
         "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
-        "OwnerKey" = "8:_525C8206BB38D1B7AC03BB3B2F7A9958"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
-        "OwnerKey" = "8:_06C221AF4054D262D111D425C80F8C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
         "OwnerKey" = "8:_89F9005C5F5E8489FF1DD81DB7BD065E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -221,6 +209,18 @@
         {
         "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
         "OwnerKey" = "8:_C89E9539F25548FE8DEA18FB00DE4AE9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
+        "OwnerKey" = "8:_525C8206BB38D1B7AC03BB3B2F7A9958"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_42DF9FE7F4B5F152A15977D6BC456D31"
+        "OwnerKey" = "8:_06C221AF4054D262D111D425C80F8C2B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -323,12 +323,6 @@
         {
         "MsmKey" = "8:_54F71426BF9D63239881B31F245F9AAC"
         "OwnerKey" = "8:_C89E9539F25548FE8DEA18FB00DE4AE9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_57190A1C9E6670263825A0DB10FFB4C1"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -651,12 +645,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CE850638F5F17D34328A567013661467"
-        "OwnerKey" = "8:_57190A1C9E6670263825A0DB10FFB4C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D22843904C22952DBC7699D12F67DD2B"
         "OwnerKey" = "8:_C89E9539F25548FE8DEA18FB00DE4AE9"
         "MsmSig" = "8:_UNDEFINED"
@@ -778,12 +766,6 @@
         "Entry"
         {
         "MsmKey" = "8:_EFC4D59ACB9A86FF260055E2062E050C"
-        "OwnerKey" = "8:_525C8206BB38D1B7AC03BB3B2F7A9958"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EFC4D59ACB9A86FF260055E2062E050C"
         "OwnerKey" = "8:_89F9005C5F5E8489FF1DD81DB7BD065E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -791,6 +773,12 @@
         {
         "MsmKey" = "8:_EFC4D59ACB9A86FF260055E2062E050C"
         "OwnerKey" = "8:_C89E9539F25548FE8DEA18FB00DE4AE9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EFC4D59ACB9A86FF260055E2062E050C"
+        "OwnerKey" = "8:_525C8206BB38D1B7AC03BB3B2F7A9958"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2949,37 +2937,6 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_57190A1C9E6670263825A0DB10FFB4C1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_57190A1C9E6670263825A0DB10FFB4C1"
-                    {
-                    "Name" = "8:System.Buffers.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Buffers.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_9CA0B4B7C17448EB812414472FF236DA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -5367,7 +5324,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Core Billing Service"
         "ProductCode" = "8:{0C2D25DF-4333-4EF5-806C-E2B5719CC57E}"
-        "PackageCode" = "8:{212E80E3-0296-4E6E-840A-84DAAE9625EA}"
+        "PackageCode" = "8:{9519BDD2-1DA4-4EC8-8126-AA8EA3DC514E}"
         "UpgradeCode" = "8:{0E3D001A-8F53-4802-9C66-E73AF18FA5A1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -5427,6 +5384,14 @@
                                     "Transitive" = "11:FALSE"
                                     "ValueTypes" = "3:1"
                                     "Value" = "8:[APIURL]"
+                                    }
+                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_29D3389757B24060B430F4D9EF5A9D56"
+                                    {
+                                    "Name" = "8:CoreDeviceId"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "ValueTypes" = "3:1"
+                                    "Value" = "8:[DEVICEID]"
                                     }
                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_77416DB337444D4FB69AADA0869224A5"
                                     {
@@ -5728,7 +5693,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:API parameters"
+                            "Value" = "8:Core Billing Service"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5741,7 +5706,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Please enter the authnetication key and API address (http://YourDomain.edu/coreapp/session.php url)"
+                            "Value" = "8:Please enter the API Address, Device ID, and Authentication Token (https://www.example.com/corebilling)"
                             "DefaultValue" = "8:#1215"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5754,7 +5719,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Authentication Key:"
+                            "Value" = "8:CoreBilling API URL:"
                             "DefaultValue" = "8:#1246"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5767,7 +5732,7 @@
                             "ContextData" = "8:Public"
                             "Attributes" = "3:2"
                             "Setting" = "3:2"
-                            "Value" = "8:AUTHKEY"
+                            "Value" = "8:APIURL"
                             "DefaultValue" = "8:EDITA1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5806,7 +5771,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Coreapp API URL:"
+                            "Value" = "8:Device ID:"
                             "DefaultValue" = "8:#1247"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5819,7 +5784,7 @@
                             "ContextData" = "8:Public"
                             "Attributes" = "3:2"
                             "Setting" = "3:2"
-                            "Value" = "8:APIURL"
+                            "Value" = "8:DEVICEID"
                             "DefaultValue" = "8:EDITA2"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5857,8 +5822,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1248"
+                            "Setting" = "3:2"
+                            "Value" = "8:Authentication Token:"
                             "DefaultValue" = "8:#1248"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5871,7 +5836,7 @@
                             "ContextData" = "8:Public"
                             "Attributes" = "3:2"
                             "Setting" = "3:2"
-                            "Value" = "8:EDITA3"
+                            "Value" = "8:AUTHKEY"
                             "DefaultValue" = "8:EDITA3"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -5897,7 +5862,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:0"
+                            "Value" = "3:1"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }

@@ -30,7 +30,9 @@ namespace CoreBillingService
         private string deviceName;
         private string coreApiUrl;
         private string coreAuthKey;
-        private string session_page = "session.php";
+        private string coreDeviceId;
+        private string session_page = "api/v1/index.php";
+        private string noun = "session";
         private string fullCoreWebUrl;
         private System.Timers.Timer timer;
         private System.Diagnostics.EventLog log;
@@ -61,20 +63,21 @@ namespace CoreBillingService
                 regKey = regKey.OpenSubKey("SOFTWARE\\CoreBillingService");
                 coreApiUrl = (string)regKey.GetValue("CoreApiUrl");
                 coreAuthKey = (string)regKey.GetValue("CoreAuthKey");
-                if (coreApiUrl == "" || coreApiUrl == null || coreAuthKey == "" || coreAuthKey == null)
+                coreDeviceId = (string)regKey.GetValue("CoreDeviceId");
+                if (coreApiUrl == "" || coreApiUrl == null || coreAuthKey == "" || coreAuthKey == null || coreDeviceId == "" || coreDeviceId == null)
                 {
-                    log.WriteEntry("CoreApiUrl or CoreAuthKey registry keys are not set.  The registry location is at HKLM\\Software\\CoreBillingService.", EventLogEntryType.Error);
+                    log.WriteEntry("CoreApiUrl, CoreAuthKey, or CoreDeviceId registry keys are not set.  The registry location is at HKLM\\Software\\CoreBillingService.", EventLogEntryType.Error);
 
                 }
 
                 if (coreApiUrl.EndsWith("/"))
                 {
-                    fullCoreWebUrl = coreApiUrl + session_page;
+                    fullCoreWebUrl = coreApiUrl + session_page + "/" + noun + "/" + coreDeviceId;
 
                 }
                 else
                 {
-                    fullCoreWebUrl = coreApiUrl + "/" + session_page;
+                    fullCoreWebUrl = coreApiUrl + "/" + session_page + "/" + noun + "/" + coreDeviceId;
                 }
 
                 FastUserSwitchingEnabled();
@@ -105,10 +108,11 @@ namespace CoreBillingService
         public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
             string userName = getUsername();
-            outputJson outputJson_obj = new outputJson();
-            outputJson_obj.key = coreAuthKey;
-            outputJson_obj.username = userName;
-            outputJson_obj.os = getWindowsVersion();
+            OutputJson outputJson_obj = new OutputJson {
+                key = coreAuthKey,
+                username = userName,
+                os = getWindowsVersion()
+            };
             
             outputJson_obj.version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             outputJson_obj.computer_name = System.Environment.MachineName;
@@ -120,71 +124,67 @@ namespace CoreBillingService
 
             string json_serialized = new JavaScriptSerializer().Serialize(outputJson_obj);
             
-            //Set array of parameters to send to REST API
-            string[] paramName = new string[] { "json" };
-            string[] paramValue = new string[] { json_serialized };
+            
 
 
             //Send to REST API
 
             if ((fullCoreWebUrl != "") && (coreAuthKey != "")) {
-                String results = HttpPost(fullCoreWebUrl, paramName, paramValue);
+                String results = HttpPost(fullCoreWebUrl, json_serialized);
             
 
-            //Results has a length of 0 or is not null then log the error
-            if (results != null || results.Length > 0)
-            {
+                //If Result is not null
+                if (results != null) {
+
+                    ReceivedJson jsonResult = new JavaScriptSerializer().Deserialize<ReceivedJson>(results);
+ 
                     if (userName != defaultUser)
                     {
-                        log.WriteEntry("Success contacting " + fullCoreWebUrl + ". Username: " + userName);
+                        
+                        if (jsonResult.result)
+                        {
+                            log.WriteEntry(jsonResult.message);
+                        }
+                        else if (!jsonResult.result)
+                        {
+                            log.WriteEntry(jsonResult.message, EventLogEntryType.Error);
+                        }
+                        
                     }
-                    else
-                    {
-                        log.WriteEntry("Success contacting " + fullCoreWebUrl + ". No User logged in.");
-
-                    }
+                    
+                }
+                else {
+                    log.WriteEntry("Not able to contact web service at " + coreApiUrl, EventLogEntryType.Error);
+                }
             }
-            else
-            {
-                log.WriteEntry("Not able to contact web service", EventLogEntryType.Error);
-            }
-        }
-            else
-            {
-                log.WriteEntry("CoreApiUrl or CoreAuthKey registry keys are not set.  The registry location is at HKLM\\Software\\CoreBillingService.", EventLogEntryType.Error);
+            else {
+                log.WriteEntry("CoreApiUrl, CoreAuthKey, or CoreDeviceID registry keys are not set.  The registry location is at HKLM\\Software\\CoreBillingService.", EventLogEntryType.Error);
             }
 
  
         }
       
-        private String HttpPost(string url,string[] paramName, string[] paramVal)
+        private String HttpPost(string url,string json_data)
         {
             HttpWebRequest req = WebRequest.Create(new Uri(url))
                                  as HttpWebRequest;
             req.Method = "POST";
-            req.ContentType = "application/x-www-form-urlencoded";
+            req.ContentType = "application/json; charset=UTF-8";
+            req.Accept = "application/json";
 
-            // Build a string with all the params, properly encoded.
-            // We assume that the arrays paramName and paramVal are
-            // of equal length:
-            StringBuilder paramz = new StringBuilder();
-            for (int i = 0; i < paramName.Length; i++)
-            {
-                paramz.Append(paramName[i]);
-                paramz.Append("=");          
-                paramz.Append(paramVal[i]);
-                paramz.Append("&");
-            }
+            string encoded_auth = System.Convert.ToBase64String(Encoding.Default.GetBytes(coreDeviceId + ":" + coreAuthKey));
+           
+            req.Headers.Add("Authorization", "Basic " + encoded_auth);
+            
 
             // Encode the parameters as form data:
-            byte[] formData =
-                UTF8Encoding.UTF8.GetBytes(paramz.ToString());
-            req.ContentLength = formData.Length;
+            byte[] postBytes = UTF8Encoding.UTF8.GetBytes(json_data);
+            req.ContentLength = postBytes.Length;
 
             // Send the request:
             using (Stream post = req.GetRequestStream())
             {
-                post.Write(formData, 0, formData.Length);
+                post.Write(postBytes, 0, postBytes.Length);
             }
 
             
@@ -193,8 +193,7 @@ namespace CoreBillingService
             string result = null;
             try
             {
-                using (HttpWebResponse resp = req.GetResponse()
-                                              as HttpWebResponse)
+                using (HttpWebResponse resp = req.GetResponse() as HttpWebResponse)
                 {
                     StreamReader reader = new StreamReader(resp.GetResponseStream());
                     result = reader.ReadToEnd();
@@ -407,7 +406,7 @@ namespace CoreBillingService
 
 
     }
-    public class outputJson
+    public class OutputJson
     {
         public string key { get; set; }
         public string username { get; set; }
@@ -420,9 +419,9 @@ namespace CoreBillingService
 
     }
 
-    public class receivedJson
+    public class ReceivedJson
     {
-        public bool success { get; set; }
+        public bool result { get; set; }
         public string message { get; set; }
 
     }
