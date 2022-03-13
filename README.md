@@ -18,7 +18,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 * .NET Framework 4.8.  The installer should install this.  It can also be downloaded manually from [https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows](https://support.microsoft.com/en-us/help/4503548/microsoft-net-framework-4-8-offline-installer-for-windows)
 * Windows 7 KB4474419.  This needs to be installed in order to install .Net Framework 4.8. [https://www.catalog.update.microsoft.com/search.aspx?q=kb4474419](https://www.catalog.update.microsoft.com/search.aspx?q=kb4474419)
 * Windows 7 TLS 1.1/1.2 support. KB3140245.  This can be installed through Windows Update as optional update.  It can also be manually installed by going to [https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245](https://www.catalog.update.microsoft.com/search.aspx?q=kb3140245)
-* Windows 7 Enable TLS 1.2: Import either windows_7_tls_1.2_x86.reg or windows_7_tls_1.2_x64.reg into the Windows Registr.
+* Windows 7 Enable TLS 1.2: Import either windows_7_tls_1.2_x86.reg or windows_7_tls_1.2_x64.reg into the Windows Registry.
 
 ### Installation
 * Download release from [https://github.com/IGBIllinois/CoreBillingService/releases](https://github.com/IGBIllinois/CoreBillingService/releases)
