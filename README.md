@@ -23,7 +23,7 @@ Then it sends the information to the core billing website [https://github.com/IG
 ### Installation
 * Download release from [https://github.com/IGBIllinois/CoreBillingService/releases](https://github.com/IGBIllinois/CoreBillingService/releases)
 * Run **CoreBillingServiceSetup_x64.msi** or **CoreBillingServiceSetup_x86.msi**
-* During installation put in the URL and generated key from core billing software
+* During installation put in the Device ID, URL and generated key from core billing software
 * The Service will automatically start and set Recovery Options.
 * For this to function properly, disable **Fast User Switching**
 * Logs can be viewed by going to Control Panel->Administrative Tools->Event Viewer->Windows Logs->Application->CoreBillingService
