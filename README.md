@@ -1,6 +1,6 @@
 # Core Billing Service
 
-[![Build Status](https://www.travis-ci.com/IGBIllinois/CoreBillingService.svg?branch=master)](https://www.travis-ci.com/IGBIllinois/CoreBillingService)
+[![Build Status](https://github.com/IGBIllinois/CorebillingService/actions/workflows/main.yml/badge.svg)](https://github.com/IGBIllinois/CorebillingService/actions/workflows/main.yml)
 
 Program to monitor who is logged into a windows machine.  
 
